@@ -83,3 +83,25 @@ return <li onclick="updateName(this)" class="${isSelected}">${data}</li>;
 // Convierte el arreglo de elementos li en una cadena de texto
 }).join("");
 // Si el arreglo está vacío, agrega un mensaje de error
+// Este evento se activa cuando se está escribiendo en el campo de búsqueda
+// Filtra los países que coinciden con la palabra buscada
+// Crea un nuevo arreglo 'arr' con los elementos de la lista que coinciden con la búsqueda
+// Si el arreglo 'arr' no está vacío, se actualiza el contenido de la lista con esos elementos
+// Si el arreglo 'arr' está vacío, se muestra un mensaje que indica que no se encontraron países
+searchInp.addEventListener("keyup", () => {
+let arr = [];
+let searchWord = searchInp.value.toLowerCase();
+arr = countries.filter(data => {
+return data.toLowerCase().startsWith(searchWord);
+}).map(data => {
+let isSelected = data == SelectBtn.firstElementChild.innerText ? "selected" : "";
+return <li onclick="updateName(this)" class="${isSelected}">${data}</li>;
+}).join("");
+  
+  
+options.innerHTML = arr ? arr : <p style = 'margin-top: 10 px;'>Oops! Country not foud</p>;
+});
+
+// Este evento se activa cuando se hace clic en el botón "Seleccionar"
+// Agrega o elimina la clase "active" del contenedor de la lista desplegable
+SelectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));

@@ -1,8 +1,18 @@
+// Selecciona los elementos del DOM necesarios
+
+// Selecciona el elemento con la clase 'wrapper' en el documento HTML y lo asigna a la constante 'wrapper'
 const wrapper = document.querySelector('.wrapper');
+
+// Selecciona el botón con la clase 'select-btn' dentro del elemento con la clase 'wrapper' y lo asigna a la variable 'SelectBtn'
 SelectBtn = wrapper.querySelector('.select-btn');
+
+// Selecciona el input dentro del elemento con la clase 'wrapper' y lo asigna a la variable 'searchInp'
 searchInp = wrapper.querySelector('input');
+
+// Selecciona el elemento con la clase 'options' dentro del elemento con la clase 'wrapper' y lo asigna a la variable 'options'
 options = wrapper.querySelector('.options');
 
+// Array de países
 let countries = ["Estados Unidos", "Canadá", "México", "Brasil", "Argentina", "Chile", "Reino Unido",
                 "Alemania", "Francia", "España", "Italia", "Japón", "China", 
                 "India", "Rusia", "Australia", "Nueva Zelanda", "Sudáfrica", 
@@ -28,34 +38,48 @@ let countries = ["Estados Unidos", "Canadá", "México", "Brasil", "Argentina", 
                 "Seychelles", "Comoras", "Mauricio", "Madagascar", "Lesoto", "Suazilandia", "Botsuana",
                 "Burundi", "Ruanda", "Burkina Faso", "Chad", "Malí", "Níger", "Sahara Occidental", ]; 
 
+// Define una función que agrega los países a la lista de opciones
 function addCountry(selectedCountry) {
-    options.innerHTML = '';
-    countries.forEach(country => {
-        let isSelected = country == selectedCountry ? 'selected' : '';
-        let li = `<li onclick = "updateName(this)" class="${isSelected}">${country}</li>`;
-        options.insertAdjacentHTML("beforeend", li);
-    });
+options.innerHTML = '';
+// Recorre el arreglo de países y para cada país crea un elemento li que se agregará a la lista de opciones
+countries.forEach(country => {
+// Comprueba si el país actual es el seleccionado
+let isSelected = country == selectedCountry ? 'selected' : '';
+// Crea el elemento li y lo agrega a la lista de opciones
+let li = <li onclick = "updateName(this)" class="${isSelected}">${country}</li>;
+options.insertAdjacentHTML("beforeend", li);
+});
 }
 
+// Llama a la función addCountry para agregar los países a la lista de opciones
 addCountry();
 
+// Define una función que actualiza el nombre del país seleccionado
 function updateName(selectedLi){
-    searchInp.value = "";
-    addCountry(selectedLi.innerHTML);
-    wrapper.classList.remove('active');
-    SelectBtn.firstElementChild.innerText = selectedLi.innerText;
+// Limpia el valor del input de búsqueda
+searchInp.value = "";
+// Agrega el país seleccionado a la lista de opciones
+addCountry(selectedLi.innerHTML);
+// Elimina la clase 'active' del elemento 'wrapper'
+wrapper.classList.remove('active');
+// Actualiza el nombre del país seleccionado en el botón de selección
+SelectBtn.firstElementChild.innerText = selectedLi.innerText;
 }
 
+// Agrega un evento que se activa cuando el usuario escribe en el input de búsqueda
 searchInp.addEventListener("keyup", () => {
-    let arr = [];
-    let searchWord = searchInp.value.toLowerCase();
-    arr = countries.filter(data => {
-        return data.toLowerCase().startsWith(searchWord);
-    }).map(data => {
-        let isSelected = data == SelectBtn.firstElementChild.innerText ? "selected" : "";
-        return `<li onclick="updateName(this)" class="${isSelected}">${data}</li>`;
-    }).join("");
-    options.innerHTML = arr ? arr : `<p style = 'margin-top: 10 px;'>Oops! Country not foud</p>`;
-});
-
-SelectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
+// Define un arreglo vacío
+let arr = [];
+// Obtiene la palabra buscada en el input y la convierte en minúsculas
+let searchWord = searchInp.value.toLowerCase();
+// Filtra los países que comienzan con la palabra buscada
+arr = countries.filter(data => {
+return data.toLowerCase().startsWith(searchWord);
+// Crea un elemento li para cada país filtrado y lo agrega al arreglo
+}).map(data => {
+// Comprueba si el país actual es el seleccionado
+let isSelected = data == SelectBtn.firstElementChild.innerText ? "selected" : "";
+return <li onclick="updateName(this)" class="${isSelected}">${data}</li>;
+// Convierte el arreglo de elementos li en una cadena de texto
+}).join("");
+// Si el arreglo está vacío, agrega un mensaje de error

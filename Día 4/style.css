@@ -1,88 +1,94 @@
+/* Importa la fuente Poppins desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-
+/* Estilo por defecto para todo el documento */
 *{
     margin: 0;
     padding: 0;
 }
 
-
+/* Estilo para el cuerpo del documento */
 body{
-    height: 100%;
-    margin: 0;
-    font-family: sans-serif, "poopins";
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #2f364f;
+    height: 100%; /* Define la altura del cuerpo del documento al 100% */
+    margin: 0; /* Elimina los márgenes por defecto del cuerpo */
+    font-family: sans-serif, "poopins"; /* Define la fuente a utilizar en el cuerpo del documento */
+    display: flex; /* Define que el cuerpo del documento será un flex container */
+    justify-content: center; /* Centra los elementos horizontalmente en el eje principal */
+    align-items: center; /* Centra los elementos verticalmente en el eje transversal */
+    min-height: 100vh; /* Define la altura mínima del cuerpo del documento al 100% del viewport */
+    background: #2f364f; /* Define el color de fondo del cuerpo del documento */
 }
 
-
-
+/* Estilo para el título */
 h1{
-    position: absolute;
-    top: 100px;
-    left: 30%;
-    margin: 0;
-    padding: 15px 35px ;
-    outline: none;
-    border: none;
-    margin: 0 5px;
-    color: #040404;
-    background: #fff;
-    font-size: 20px;
-    font-weight: 500;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    box-shadow: 10px 10px 20px rgb(0, 0, 0, .09)
+    position: absolute; /* Define la posición del elemento como absoluta */
+    top: 100px; /* Define la posición del elemento en la parte superior a 100px desde el borde superior del documento */
+    left: 30%; /* Define la posición del elemento en la parte izquierda a 30% desde el borde izquierdo del documento */
+    margin: 0; /* Elimina los márgenes por defecto del elemento */
+    padding: 15px 35px ; /* Define el relleno del elemento */
+    outline: none; /* Elimina el borde de resaltado al hacer click en el elemento */
+    border: none; /* Elimina el borde por defecto del elemento */
+    margin: 0 5px; /* Define el margen entre el elemento y otros elementos */
+    color: #040404; /* Define el color del texto */
+    background: #fff; /* Define el color de fondo del elemento */
+    font-size: 20px; /* Define el tamaño de la fuente */
+    font-weight: 500; /* Define el grosor de la fuente */
+    font-weight: bold; /* Define el grosor de la fuente como bold */
+    border-radius: 4px; /* Define el radio de los bordes del elemento */
+    cursor: pointer; /* Define el cursor del ratón como pointer */
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, .09) /* Agrega una sombra al elemento */
 }
 
+/* Estilo para el enlace dentro del título */
 h1 a {
-    text-decoration: none;
+    text-decoration: none; /* Elimina la decoración de enlace del enlace dentro del título */
 }
 
+/* Estilo para el contenedor de la caja */
 .box {
-    width: 640px;
-    height: 360px;
-    /*background #fff; */
-    
-    transform: rotate(-25deg) skew(25deg);
-    display: flex;
+    width: 640px; /* Define el ancho del contenedor de la caja */
+    height: 360px; /* Define la altura del contenedor de la caja */
+    transform: rotate(-25deg) skew(25deg); /* Aplica una transformación al contenedor de la caja para girarlo y sesgarlo */
+    display: flex; /* Define que el contenedor de la caja será un flex container */
 }
 
+/* Estilo para la caja al pasar el cursor por encima */
 .box:hover {
-    transform: rotate(-25deg) skew(-25deg) translateY(-20px);
+    transform: rotate(-25deg) skew(-25deg) translateY(-20px); /* Aplica una transform */
 }
 
+/* Define las propiedades del elemento "span" dentro del contenedor "box" */
 .box span{
-    width: 25%;
-    height: 100%;
-    background: url(img.jpg);
-    background-size: cover;
-    background-position: calc(-160px * var(--i));
-    display: block;
-    transition: .5s;
-    pointer-events: none;
-    border-top: 5px solid #fff;
-    border-bottom: 5px solid #fff;
+    width: 25%; /* Anchura del span */
+    height: 100%; /* Altura del span */
+    background: url(img.jpg); /* Imagen de fondo del span */
+    background-size: cover; /* La imagen de fondo se ajusta a la anchura y altura del elemento */
+    background-position: calc(-160px * var(--i)); /* Ubicación de la imagen de fondo */
+    display: block; /* El elemento se muestra como bloque*/
+    transition: .5s; /* Se aplica una transición suave de 0.5 segundos */
+    pointer-events: none; /* El elemento no responde a eventos del puntero del ratón */
+    border-top: 5px solid #fff; /* Establece una línea superior de 5px con color blanco */
+    border-bottom: 5px solid #fff; /* Establece una línea inferior de 5px con color blanco */
 }
 
+/* Cuando el cursor pasa sobre el contenedor "box", se aplican los siguientes estilos a los elementos "span" impares */
 .box:hover span:nth-child(odd) {
-    transform: skewY(25deg);
-    box-shadow: inset 20px 0 50px rgba(0, 0, 0, .5);
+    transform: skewY(25deg); /* Transforma el elemento en un ángulo de 25 grados hacia arriba y hacia la derecha */
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0, .5); /* Establece una sombra en relieve de 20px en la dirección horizontal y 50px en la dirección vertical */
 }
 
+/* Cuando el cursor pasa sobre el contenedor "box", se aplican los siguientes estilos a los elementos "span" pares */
 .box:hover span:nth-child(even){
-    transform: skewY(-25deg);
-    box-shadow: inset 20px 0 50px rgba(0, 0, 0, .5);
-} 
+    transform: skewY(-25deg); /* Transforma el elemento en un ángulo de 25 grados hacia abajo y hacia la derecha */
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0, .5); /*Establece una sombra en relieve de 20px en la dirección horizontal y 50px en la dirección vertical */
+}
 
+/* Establece una línea izquierda de 5px con color blanco en el primer elemento "span" */
 .box span:first-child{
     border-left: 5px solid #fff;
 }
 
+/* Establece una línea derecha de 5px con color blanco en el último elemento "span" */
 .box span:last-child {
     border-right: 5px solid #fff;
 }
